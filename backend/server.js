@@ -35,7 +35,7 @@ app.put("/api/contacts/:id", async (req, res) => {
   console.log(req.params.id);
 });
 
-app.get("/api/contacts/:id", async (req, res) => {
+app.get("/api/usercontact/:id", async (req, res) => {
   const contact = await Contact.findById(req.params.id);
   res.json(contact);
   console.log(req.params.id);
