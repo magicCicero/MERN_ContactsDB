@@ -11,34 +11,57 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/api/contacts", async (req, res) => {
-  const contacts = await Contact.find();
-  res.json(contacts);
-  console.log(contacts);
+  try {
+    const contacts = await Contact.find();
+    res.json(contacts);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 app.post("/api/contacts", async (req, res) => {
-  const newContact = new Contact(req.body);
-  await newContact.save();
-  res.json(newContact);
-  console.log(newContact);
+  try {
+    const newContact = new Contact(req.body);
+    await newContact.save();
+    res.json(newContact);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 app.delete("/api/contacts/:id", async (req, res) => {
-  await Contact.findByIdAndDelete(req.params.id);
-  res.json({ message: "Kontakt gelöscht mit der ID: " + req.params.id });
-  console.log(req.params.id);
+  try {
+    await Contact.findByIdAndDelete(req.params.id);
+    res.json({ message: "Kontakt gelöscht mit der ID: " + req.params.id });
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 app.put("/api/contacts/:id", async (req, res) => {
-  await Contact.findByIdAndUpdate(req.params.id, req.body);
-  res.json({ message: "Kontakt bearbeitet mit der ID: " + req.params.id });
-  console.log(req.params.id);
+  try {
+    await Contact.findByIdAndUpdate(req.params.id, req.body);
+    res.json({ message: "Kontakt bearbeitet mit der ID: " + req.params.id });
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 app.get("/api/contacts/:id", async (req, res) => {
-  const contact = await Contact.findById(req.params.id);
-  res.json(contact);
-  console.log(req.params.id);
+  try {
+    const contact = await Contact.findById(req.params.id);
+    res.json(contact);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+app.get("/api/contacts/:id", async (req, res) => {
+  try {
+    const contact = await Contact.findById(req.params.id);
+    res.json(contact);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 app.listen(PORT, () => {
