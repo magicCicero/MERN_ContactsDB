@@ -6,6 +6,7 @@ import { AllContactsContext } from "../../../context/Context";
 const ContactList = () => {
   const { allContacts, setAllContacts } = useContext(AllContactsContext);
   // Anzeige aller Kontakte.
+
   return (
     <>
       <h1>Kontakte</h1>
