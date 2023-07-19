@@ -1,4 +1,5 @@
 import AddContact from "./components/AddContact/AddContact";
+import FilterContact from "./components/FilterContact/FilterContact";
 import { useState, useEffect } from "react";
 import "./App.css";
 import ContactList from "./components/ContactList/ContactList";
@@ -19,6 +20,7 @@ function App() {
         <AllContactsContext.Provider value={{ allContacts, setAllContacts }}>
           <h1>Kontaktliste</h1>
           <AddContact />
+          <FilterContact />
           <ContactList />
         </AllContactsContext.Provider>
       </EditingContext.Provider>

@@ -1,7 +1,7 @@
 import DeleteBtn from "../DeleteBtn/DeleteBtn";
 import { AllContactsContext } from "../../../context/Context";
 import { useContext, useEffect } from "react";
-import axios from "axios";
+
 import UpdateBtn from "../UpdateBtn/UpdateBtn";
 const ContactItem = () => {
   const { allContacts, setAllContacts } = useContext(AllContactsContext);
